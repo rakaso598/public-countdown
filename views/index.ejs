@@ -3,17 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <title>엔비디아 3분기 실적 발표 카운트다운</title>
     
     <link rel="stylesheet" href="/css/style.css">
+    <meta name="target-date" content="2025-11-19T21:00:00Z"> 
 </head>
 <body>
-    <h1><%= title %></h1>
-    <p>이 페이지는 EJS 템플릿 엔진을 사용하여 서버에서 렌더링되었습니다.</p>
+    <h1>엔비디아 3분기 실적 발표 카운트다운</h1>
     
-    <div class="js-status" id="js-status">
-        Loading JavaScript...
+    <div id="countdown" class="countdown-display">
+        <p>카운트다운을 시작합니다...</p>
     </div>
+    
+    <div class="button-container">
+        <a href="https://kr.investing.com/equities/nvidia-corp" target="_blank" class="info-button">
+            📈 엔비디아 정보 자세히 확인하기
+        </a>
+    </div>
+
+    <p class="note">발표 시간: 2025년 11월 20일 오전 6시 이후 (한국 기준)</p>
+    <p class="note">참고: 발표 시각은 ±30분 변동 가능성이 있습니다.</p>
     
     <script src="/js/script.js"></script>
 </body>

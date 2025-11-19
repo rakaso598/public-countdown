@@ -1,21 +1,85 @@
-/* public/css/style.css */
+/* public/css/style.css (최종 수정본: 튀어나옴 해결) */
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* 배경색 변경 */
+    background-color: #f0f0f0; 
     color: #333;
-    padding: 20px;
+    padding: 0; /* body의 전체 패딩 제거 */
+    text-align: center; 
+    margin: 0 auto; /* 중앙 정렬 */
+    
+    /* 전체 페이지 가로폭 제한 */
+    max-width: 600px; 
+    
+    /* 💡 모든 콘텐츠가 body의 최대 너비 내에서 시작하도록 설정 💡 */
+    box-sizing: border-box; 
+    padding: 15px; /* 내부 여백은 여기서 확보 */
 }
 
 h1 {
-    color: #007bff; /* 제목색 변경 */
+    color: #007bff; 
     border-bottom: 2px solid #007bff;
     padding-bottom: 10px;
+    font-size: 1.8em; 
+    margin-top: 15px;
 }
 
-.js-status {
-    margin-top: 15px;
-    padding: 10px;
-    background-color: #fff;
-    border: 1px dashed #ccc;
+/* 카운트다운 박스 스타일 */
+.countdown-display {
+    font-size: 2em; 
+    font-weight: bold;
+    color: #007bff;
+    padding: 25px 15px; 
+    border: 3px solid #007bff;
+    border-radius: 10px;
+    margin: 20px auto; 
+    width: 90%; 
+    box-sizing: border-box; 
+    background-color: #eaf6ff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.countdown-display.finished {
+    color: #28a745;
+    border-color: #28a745;
+    background-color: #d4edda;
+}
+
+.note {
+    font-size: 0.85em;
+    color: #6c757d;
+}
+
+/* 버튼 스타일 */
+.button-container {
+    margin: 30px auto;
+    width: 90%; 
+    /* 💡 버튼 컨테이너에 box-sizing 적용하여 패딩/보더에 의한 너비 초과 방지 💡 */
+    box-sizing: border-box; 
+}
+
+.info-button {
+    display: block; 
+    width: auto;
+    padding: 15px 10px; 
+    font-size: 1.1em; 
+    font-weight: bold;
+    color: white; 
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.info-button:hover {
+    background-color: #0056b3;
+    transform: none; 
+}
+
+.info-button:active {
+    background-color: #004085;
+    transform: scale(0.98); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

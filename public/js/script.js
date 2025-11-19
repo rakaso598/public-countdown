@@ -1,16 +1,35 @@
 // public/js/script.js
 
-// 페이지 로드가 완료되면 함수를 실행
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. HTML 요소 선택
-  const targetElement = document.getElementById('js-status');
+  const targetDateMeta = document.querySelector('meta[name="target-date"]');
+  if (!targetDateMeta) return;
 
-  // 2. 내용 변경 (JS 실행 확인)
-  if (targetElement) {
-    targetElement.innerHTML = '✅ **JavaScript 파일이 성공적으로 로드되어 이 내용을 변경했습니다!**';
-    targetElement.style.backgroundColor = '#d4edda'; // 배경색 변경
-    targetElement.style.color = '#155724'; // 글자색 변경
-  } else {
-    console.error('ID "js-status"를 가진 요소를 찾을 수 없습니다.');
+  const targetTime = new Date(targetDateMeta.content).getTime();
+  const countdownElement = document.getElementById('countdown');
+
+  if (!countdownElement) {
+    console.error("ID 'countdown' 요소를 찾을 수 없습니다. HTML ID를 확인하세요.");
+    return;
   }
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetTime - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    if (distance < 0) {
+      clearInterval(timer);
+      countdownElement.innerHTML = "✅ 실적 발표가 시작되었습니다!";
+      countdownElement.classList.add('finished');
+    } else {
+      countdownElement.innerHTML = `${days}일 ${hours}시간 ${minutes}분 ${seconds}초`;
+    }
+  }
+
+  const timer = setInterval(updateCountdown, 1000);
+  updateCountdown();
 });
