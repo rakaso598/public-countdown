@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (distance < 0) {
       clearInterval(timer);
-      countdownElement.innerHTML = "✅ **실적 발표가 시작되었습니다!**";
+      countdownElement.innerHTML = "✅ 실적 발표가 시작되었습니다!";
       countdownElement.classList.add('finished');
     } else {
       countdownElement.innerHTML = `${days}일 ${hours}시간 ${minutes}분 ${seconds}초`;

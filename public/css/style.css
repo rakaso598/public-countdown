@@ -76,7 +76,7 @@ h1 {
 
 .info-button {
     display: block; 
-    width: 100%;
+    width: full;
     padding: 15px 10px; 
     font-size: 1.1em; 
     font-weight: bold;
