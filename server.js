@@ -7,7 +7,7 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
-const port = 3000;
+const port = 8080;
 
 // EJS 설정
 app.set('view engine', 'ejs');
