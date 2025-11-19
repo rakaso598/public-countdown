@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>엔비디아 카운트다운</title> 
+    <title><%= title %> | 카운트다운</title> 
     
     <link rel="stylesheet" href="/css/style.css">
-    <meta name="target-date" content="2025-11-19T21:00:00Z"> 
+    <meta name="target-date" content="<%= targetDate %>"> 
 </head>
 <body>
-    <h1>엔비디아 3분기 실적 발표 카운트다운</h1>
+    <h1><%= h1Title %></h1>
     
+    <% if (isAdmin) { %>
+        <p class="admin-link-note"><a href="/admin">⚙️ 관리자 설정 페이지로 이동</a></p>
+    <% } %>
+
     <div class="visitor-display">
         현재 접속자: <span><%= visitorCount %></span> 명
     </div>
@@ -20,16 +24,15 @@
     </div>
     
     <div class="button-container">
-        <a href="https://kr.investing.com/equities/nvidia-corp" target="_blank" class="info-button">
-            📈 엔비디아 정보 자세히 확인하기
+        <a href="<%= buttonLink %>" target="_blank" class="info-button">
+            <%= buttonText %>
         </a>
     </div>
 
-    <p class="note">발표 시간: 2025년 11월 20일 오전 6시 이후 (한국 기준)</p>
-    <p class="note">참고: 발표 시각은 ±30분 변동 가능성이 있습니다.</p>
+    <p class="note"><%= note %></p>
+    <p class="note"><%= subNote %></p>
     
     <script src="/socket.io/socket.io.js"></script> 
-    
     <script src="/js/script.js"></script>
 
 </body>

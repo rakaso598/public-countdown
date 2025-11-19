@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const targetDateMeta = document.querySelector('meta[name="target-date"]');
   if (!targetDateMeta) return;
 
+  // 💡 targetDate는 서버에서 EJS를 통해 삽입된 값을 읽어옴 💡
   const targetTime = new Date(targetDateMeta.content).getTime();
   const countdownElement = document.getElementById('countdown');
 
@@ -19,13 +20,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+    // 💡 브라우저 타이틀에 사용될 제목을 EJS에서 직접 가져옴 💡
+    const eventTitle = document.title.split(' | ')[1] || '카운트다운';
+
+
     if (distance < 0) {
       clearInterval(timer);
       countdownElement.innerHTML = "✅ 실적 발표가 시작되었습니다!";
       countdownElement.classList.add('finished');
 
-      // 💡 타이틀 업데이트: 발표 종료 시 💡
-      document.title = "✅ 발표 시작! | 엔비디아 실적 발표";
+      // 타이틀 업데이트: 발표 종료 시
+      document.title = `✅ 발표 시작! | ${eventTitle}`;
 
     } else {
       // 메인 카운트다운 디스플레이 업데이트 (일, 시, 분, 초)
@@ -36,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       let titleTime;
       if (days > 0) {
-        // 1일 이상 남았으면 일, 시, 분 포맷 (브라우저 창 크기 제한 고려)
+        // 1일 이상 남았으면 일, 시, 분 포맷
         titleTime = `${days}일 ${formatNumber(hours)}:${formatNumber(minutes)}`;
       } else {
         // 1일 미만 남았으면 시, 분, 초 포맷
@@ -44,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // 💡 최종 타이틀 형식: [시간] | [이벤트 이름] 💡
-      document.title = `${titleTime} | 엔비디아 실적 발표`;
+      document.title = `${titleTime} | ${eventTitle}`;
     }
   }
 

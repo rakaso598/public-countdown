@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카운트다운 설정</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .admin-box { max-width: 600px; margin: 20px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: left; }
+        .admin-box h2 { color: #007bff; border-bottom: 2px solid #ddd; padding-bottom: 10px; margin-bottom: 20px; }
+        .admin-box label { display: block; font-weight: bold; margin-top: 15px; margin-bottom: 5px; }
+        .admin-box input[type="text"], .admin-box textarea, .admin-box input[type="datetime-local"] { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        .admin-box button { padding: 12px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1.1em; margin-top: 20px; }
+        .success-message { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; padding: 10px; margin-bottom: 15px; border-radius: 5px; font-weight: bold; text-align: center; }
+        .logout-link { display: block; margin-top: 30px; text-align: center; }
+        hr { border: 0; border-top: 1px solid #eee; }
+    </style>
+</head>
+<body>
+    <div class="admin-box">
+        <h2>⚙️ 카운트다운 설정 관리</h2>
+
+        <% if (message) { %>
+            <div class="success-message"><%= message %></div>
+        <% } %>
+
+        <form method="POST" action="/update">
+            
+            <label for="title">브라우저 제목 (Title Tag):</label>
+            <input type="text" id="title" name="title" value="<%= title %>" required>
+
+            <label for="h1Title">메인 H1 제목:</label>
+            <input type="text" id="h1Title" name="h1Title" value="<%= h1Title %>" required>
+
+            <label for="targetDate">목표 날짜 및 시간 (UTC/GMT):</label>
+            <% 
+                const isoDate = new Date(targetDate);
+                // HTML input[type=datetime-local] 포맷 (YYYY-MM-DDTHH:MM)으로 변환
+                const localDateString = isoDate.getFullYear() + '-' +
+                                        String(isoDate.getMonth() + 1).padStart(2, '0') + '-' +
+                                        String(isoDate.getDate()).padStart(2, '0') + 'T' +
+                                        String(isoDate.getHours()).padStart(2, '0') + ':' +
+                                        String(isoDate.getMinutes()).padStart(2, '0');
+            %>
+            <input type="datetime-local" id="targetDate" name="targetDate" value="<%= localDateString %>" required>
+            <p class="note" style="text-align: right; color: #e74c3c;">현재 <%= targetDate %> (UTC 기준)</p>
+
+
+            <label for="note">메인 안내 문구:</label>
+            <textarea id="note" name="note" rows="2" required><%= note %></textarea>
+
+            <label for="subNote">하단 참고 문구:</label>
+            <textarea id="subNote" name="subNote" rows="2" required><%= subNote %></textarea>
+
+            <hr>
+            <h3>버튼 설정</h3>
+
+            <label for="buttonText">버튼 텍스트:</label>
+            <input type="text" id="buttonText" name="buttonText" value="<%= buttonText %>" required>
+
+            <label for="buttonLink">버튼 링크 (전체 URL):</label>
+            <input type="text" id="buttonLink" name="buttonLink" value="<%= buttonLink %>" required>
+            <p class="note" style="text-align: right; color: #7f8c8d;">예: https://example.com/info</p>
+
+            <button type="submit">설정 저장 및 반영</button>
+        </form>
+
+        <a href="/" class="logout-link">메인 페이지로 돌아가기</a>
+        <a href="/logout" class="logout-link" style="color: #e74c3c; font-weight: bold;">로그아웃</a>
+    </div>
+</body>
+</html>
