@@ -1,19 +1,17 @@
-/* public/css/style.css (최종 수정본: 튀어나옴 해결) */
+/* public/css/style.css (최종 모바일 우선 버전) */
 
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0; 
     color: #333;
-    padding: 0; /* body의 전체 패딩 제거 */
+    padding: 0; 
     text-align: center; 
-    margin: 0 auto; /* 중앙 정렬 */
     
-    /* 전체 페이지 가로폭 제한 */
+    /* 전체 페이지 가로폭 제한 및 중앙 정렬 */
     max-width: 600px; 
-    
-    /* 💡 모든 콘텐츠가 body의 최대 너비 내에서 시작하도록 설정 💡 */
+    margin: 0 auto; 
     box-sizing: border-box; 
-    padding: 15px; /* 내부 여백은 여기서 확보 */
+    padding: 15px; /* 내부 여백 */
 }
 
 h1 {
@@ -22,6 +20,25 @@ h1 {
     padding-bottom: 10px;
     font-size: 1.8em; 
     margin-top: 15px;
+}
+
+/* 방문자 수 스타일 */
+.visitor-display {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #333;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #ffeaa7; 
+    border-radius: 5px;
+    display: inline-block; 
+}
+
+.visitor-display span {
+    color: #d63031;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-left: 5px;
 }
 
 /* 카운트다운 박스 스타일 */
@@ -54,13 +71,12 @@ h1 {
 .button-container {
     margin: 30px auto;
     width: 90%; 
-    /* 💡 버튼 컨테이너에 box-sizing 적용하여 패딩/보더에 의한 너비 초과 방지 💡 */
     box-sizing: border-box; 
 }
 
 .info-button {
     display: block; 
-    width: auto;
+    width: 100%;
     padding: 15px 10px; 
     font-size: 1.1em; 
     font-weight: bold;

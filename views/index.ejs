@@ -11,6 +11,10 @@
 <body>
     <h1>엔비디아 3분기 실적 발표 카운트다운</h1>
     
+    <div class="visitor-display">
+        현재 접속자: <span><%= visitorCount %></span> 명
+    </div>
+
     <div id="countdown" class="countdown-display">
         <p>카운트다운을 시작합니다...</p>
     </div>
@@ -21,9 +25,12 @@
         </a>
     </div>
 
-    <p class="note">발표 시간: 2025년 11월 20일 오전 6시 이후 (한국 기준)</p>
+    <p class="note">발표 시간: **2025년 11월 20일 오전 6시 이후 (한국 기준)**</p>
     <p class="note">참고: 발표 시각은 ±30분 변동 가능성이 있습니다.</p>
     
+    <script src="/socket.io/socket.io.js"></script> 
+    
     <script src="/js/script.js"></script>
+
 </body>
 </html>
