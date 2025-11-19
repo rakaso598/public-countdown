@@ -1,0 +1,21 @@
+/* public/css/style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* 배경색 변경 */
+    color: #333;
+    padding: 20px;
+}
+
+h1 {
+    color: #007bff; /* 제목색 변경 */
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.js-status {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px dashed #ccc;
+}
