@@ -26,11 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (distance < 0) {
       clearInterval(timer);
-      countdownElement.innerHTML = "✅ 실적 발표가 시작되었습니다!";
+      // 💡 범용적인 완료 메시지로 수정 💡
+      countdownElement.innerHTML = "카운트다운 완료!";
       countdownElement.classList.add('finished');
 
       // 타이틀 업데이트: 발표 종료 시
-      document.title = `✅ 발표 시작! | ${eventTitle}`;
+      document.title = `🎉 완료! | ${eventTitle}`;
 
     } else {
       // 메인 카운트다운 디스플레이 업데이트 (일, 시, 분, 초)

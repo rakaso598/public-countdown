@@ -23,13 +23,13 @@ const SESSION_SECRET = process.env.SESSION_SECRET || 'a_default_secret_key_for_d
 
 // 💡 카운트다운 설정 (메모리 내 저장소)
 let countdownSettings = {
-  title: '엔비디아 3분기 실적 발표 카운트다운',
-  h1Title: '엔비디아 3분기 실적 발표 카운트다운',
-  targetDate: '2025-11-19T21:00:00Z', // UTC 기준
-  note: '발표 시간: 2025년 11월 20일 오전 6시 이후 (한국 기준)',
-  subNote: '참고: 발표 시각은 ±30분 변동 가능성이 있습니다.',
-  buttonText: '📈 엔비디아 정보 자세히 확인하기',
-  buttonLink: 'https://kr.investing.com/equities/nvidia-corp'
+  title: '새로운 이벤트 카운트다운 설정',
+  h1Title: '카운트다운 타이머를 설정해주세요',
+  targetDate: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString(), // UTC 기준: 현재 시간으로부터 약 1년 후 (수정을 유도)
+  note: '여기에 카운트다운 이벤트에 대한 상세 설명이나 유의사항을 적어주세요.',
+  subNote: '참고: 관리자 페이지에서 모든 텍스트와 시간을 변경할 수 있습니다.',
+  buttonText: '버튼 텍스트를 설정해주세요',
+  buttonLink: '#' // 기본 링크를 #으로 설정
 };
 
 const port = process.env.PORT || 8080;
